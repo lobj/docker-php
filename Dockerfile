@@ -15,16 +15,17 @@ RUN set -ex \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
     libpng12-dev \
-    && docker-php-ext-install -j$(nproc) iconv mcrypt \
+    && docker-php-ext-install  iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
+    #gd
+    && docker-php-ext-install gd\
+    && docker-php-ext-enable gd \
+    
     pecl install redis-3.1.4 \
     && docker-php-ext-enable redis \
     #&& pecl install xdebug-2.5.0 \
     #&& docker-php-ext-enable xdebug \
-    #gd
-    && docker-php-ext-install gd\
-    && docker-php-ext-enable gd \
+    
     #mysql
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-enable pdo_mysql
