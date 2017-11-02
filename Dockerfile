@@ -21,7 +21,7 @@ RUN set -ex \
     && docker-php-ext-install gd\
     && docker-php-ext-enable gd \
     
-    pecl install redis-3.1.4 \
+    &&pecl install redis-3.1.4 \
     && docker-php-ext-enable redis \
     #&& pecl install xdebug-2.5.0 \
     #&& docker-php-ext-enable xdebug \
